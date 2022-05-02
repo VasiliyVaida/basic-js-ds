@@ -37,14 +37,35 @@ class BinarySearchTree {
     }
   }
 
-  has(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  has(data) {
+    return searchData(this.rootNode, data);
+
+    function searchData(node, data) {
+      if (!node) {
+        return false;
+      }
+
+      if (node.data === data) {
+        return true;
+      }
+
+      return data < node.data ? searchData(node.left, data) : searchData(node.right, data);
+    }
   }
 
-  find(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  find(data) {
+    return findData(this.rootNode, data);
+    function findData(node, data) {
+      if (node === null) {
+        return null;
+      } else if (data < node.data) {
+        return findData(node.left, data);
+      } else if (data > node.data) {
+        return findData(node.right, data);
+      } else {
+        return node;
+      }
+    }
   }
 
   remove(/* data */) {
